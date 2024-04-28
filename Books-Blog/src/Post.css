@@ -1,0 +1,22 @@
+.post {
+    font-family: Baskerville;
+    list-style-type: none;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: justify;
+    color: #f2f3f5;
+}
+
+.post-blueish {
+    background-color: #505764;
+}
+
+.post-redish {
+    background-color: #6e262e;
+}
+
+.post h1{
+    text-align: left;
+}

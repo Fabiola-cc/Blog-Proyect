@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    background-color: #966D5B;
+    height: 10vh;
+    width: 98%;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: Palatino;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 4px rgba(100 20 20 0.5);
+    color: #32191D;
+}

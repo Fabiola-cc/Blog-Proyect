@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    width: 98%;
+}
+
+.menu {
+    font-family: Baskerville;
+    width: 25vw;
+    height: 70vh;
+    background-color: #D8BA9E;
+    padding: 10px;
+    text-align: center;
+    color: #7D392D;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.error {
+    height: 32px;
+    width: 768px;
+    border-radius: 10px;
+    background-color: #7D1F23;
+    color: #fff;
+    text-align: center;
+    padding: 2px;
+    margin: 200px;
+}
+
+.loading-image {
+    height: 432px;
+    width: 768px;
+    border-radius: 10px;
+    padding: 10px;
+}
