@@ -1,0 +1,32 @@
+.post-form {
+    width: 80vw;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #745446;
+    border-radius: 5px;
+    background-color: #966D5B;
+}
+
+.post-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.post-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.post-form input[type="text"],
+.post-form textarea {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: none;
+}
+
+.post-form textarea {
+    height: 100px; /* Ajusta la altura según sea necesario */
+}

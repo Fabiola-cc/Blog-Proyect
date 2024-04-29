@@ -16,6 +16,7 @@
 
 .posts {
     display: grid;
+    padding: 0 2% 0 2% ;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
 }
@@ -34,6 +35,5 @@
 .loading-image {
     height: auto;
     width: 80vw;
-    border-radius: 10px;
     padding: 10px;
 }

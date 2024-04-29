@@ -14,3 +14,8 @@
     color: #32191D;
     margin: 1%;
 }
+
+.header button{
+    padding: 12px 5%;
+    background-color: #7e5b4d;
+}
