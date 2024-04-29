@@ -37,7 +37,7 @@ const Content = () => {
 
     // WAITING LOGIC
     if (posts.length === 0) {
-        return <img src="./img/loading.gif" alt="loading" className="loading-image" />;
+        return <img src="/img/loading.gif" alt="loading" className="loading-image" />;
     }
 
     // VISUALIZE
@@ -51,8 +51,8 @@ const Content = () => {
             </ul>
 
             <ul className="posts">
-                {posts.map(({ id, book_title, author, genre, sinopsis, comments }) => (
-                    <Post key={id} id={id} book_title={book_title} author={author} genre={genre} sinopsis={sinopsis} comments={comments} />
+                {posts.map(({ id, book_title, author, sinopsis, comments }) => (
+                    <Post key={id} id={id} book_title={book_title} author={author} sinopsis={sinopsis} comments={comments} />
                 ))}
             </ul>
         </div>

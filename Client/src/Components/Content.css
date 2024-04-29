@@ -1,6 +1,7 @@
 .content {
     display: flex;
     width: 98%;
+    padding: 1%;
 }
 
 .menu {
@@ -31,8 +32,8 @@
 }
 
 .loading-image {
-    height: 432px;
-    width: 768px;
+    height: auto;
+    width: 80vw;
     border-radius: 10px;
     padding: 10px;
 }

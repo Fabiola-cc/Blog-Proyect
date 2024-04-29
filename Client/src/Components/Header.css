@@ -2,14 +2,15 @@
     display: flex;
     background-color: #966D5B;
     height: 10vh;
-    width: 98%;
+    width: 95%;
     font-weight: bold;
-    font-size: 60px;
+    font-size: 50px;
     font-family: Palatino;
     border-radius: 10px;
     padding: 10px;
     align-items: center;
-    justify-content: center;
-    text-shadow: 2px 2px 4px rgba(100 20 20 0.5);
+    justify-content: space-between;
+    text-shadow: rgba(100, 20, 20, 0.5) 2px 2px 4px;
     color: #32191D;
+    margin: 1%;
 }

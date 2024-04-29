@@ -1,0 +1,22 @@
+.app {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  background-image: url('/img/library_wp.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.login {
+  height: 100vh;
+  align-items: center;
+}

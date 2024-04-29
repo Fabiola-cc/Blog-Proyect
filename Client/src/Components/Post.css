@@ -1,10 +1,10 @@
 .post {
     font-family: Baskerville;
     list-style-type: none;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    border-radius: 5px;
+    padding: 3%;
+    box-shadow: #0000001a 0px 4px 8px;
+    margin-bottom: 5%;
+    border-radius: 3%;
     text-align: justify;
     color: #f2f3f5;
 }
@@ -19,4 +19,5 @@
 
 .post h1{
     text-align: left;
+    margin-bottom: 0%;
 }

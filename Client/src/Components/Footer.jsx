@@ -6,6 +6,6 @@ function Footer() {
             Copyright 2024 UVG
         </footer>
     );
-};
+}
 
 export default Footer;

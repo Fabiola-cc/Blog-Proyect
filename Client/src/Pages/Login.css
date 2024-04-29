@@ -1,0 +1,40 @@
+
+.login-form {
+    background-color: #966D5B; /* base */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #32191D; /* dark */
+    width: 50vw;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #32191D; /* dark */
+}
+
+.input-group input {
+    width: 98%;
+    padding: 2%;
+    border: 1px solid #32191D; /* dark */
+    border-radius: 5px;
+}
+
+.btn-submit {
+    background-color: #6E262E; /* redish */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #7D392D; /* brown */
+}

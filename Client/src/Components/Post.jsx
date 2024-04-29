@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Post.css';
 
-const Post = ({ id, book_title, author, genre, sinopsis, comments }) => {
+const Post = ({ id, book_title, author, sinopsis, comments }) => {
     const postClassName = id % 2 !== 0 ? 'post post-blueish' : 'post post-redish';
 
     return (
@@ -18,7 +18,6 @@ Post.propTypes = {
     id: PropTypes.number.isRequired,
     book_title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
     sinopsis: PropTypes.string.isRequired,
     comments: PropTypes.string.isRequired,
 };
