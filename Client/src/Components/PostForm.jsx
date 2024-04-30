@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './PostForms.css'
 import Button from './Button';
 
-const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
+const PostForm = ({ isEditing, existingPostData }) => {
     const [formData, setFormData] = useState({
         book_title: '',
         author: '',
@@ -11,6 +11,23 @@ const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
         sinopsis: '',
         comments: ''
     });
+    
+    const updatePost = async (postId, updatedData) => {
+        try {
+            const response = await fetch(`https://api.tiburoncin.lat/22787/posts/${postId}`, {
+                method: 'PUT', // o 'PATCH' dependiendo de la API
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+            if (!response.ok) {
+                throw new Error('Error al actualizar el post');
+            }
+        } catch (error) {
+            console.error('Error al actualizar el post:', error.message);
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,7 +36,6 @@ const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit(formData);
         // Limpiar el formulario después de enviar
         setFormData({
             book_title: '',
@@ -34,7 +50,7 @@ const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
         setFormData({
             book_title: postData.book_title,
             author: postData.author,
-            genre: postData.genre,
+            genre: postData.genero,
             sinopsis: postData.sinopsis,
             comments: postData.comments
         });
@@ -42,14 +58,14 @@ const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
     
     // Llamar a la función loadPostData con los datos del post existente cuando sea necesario
     useEffect(() => {
-        if (isEditing) { // Supongamos que isEditing es un booleano que indica si estás editando un post
+        if (isEditing) { // isEditing es un booleano que indica si estás editando un post
             loadPostData(existingPostData);
         }
     }, [isEditing, existingPostData]); // Dependencias para el efecto
 
     return (
         <div className='post-form'>
-            <h2>Create Post</h2>
+            <h2>Post</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="book_title">Book Title:</label>
@@ -78,7 +94,6 @@ const PostForm = ({ onSubmit, isEditing, existingPostData }) => {
 };
 
 PostForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
     isEditing: PropTypes.bool.isRequired,
     existingPostData: PropTypes.object
 };

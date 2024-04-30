@@ -34,3 +34,10 @@
 .post button:hover {
     background-color: #bec1c7;
 }
+
+.buttons {
+    padding-left: 8%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}

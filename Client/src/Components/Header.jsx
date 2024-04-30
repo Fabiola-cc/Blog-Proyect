@@ -1,18 +1,33 @@
 import './Header.css'
-import Button from './Button'; // Importa el componente Button si están en el mismo directorio
+import Button from './Button';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({ main }) => {
+    
     const handleAdminClick = () => {
-        // Lógica para manejar el clic en el botón "Admin"
-        console.log('Admin button clicked');
+        // Redirigir a la pantalla de login
+        
+    };
+
+    const handleLogout = () => {
+        // Redirigir a la pantalla principal
+        
     };
 
     return (
         <header className="header">
             Rincón de lectura
-            <Button text="Admin" onClick={handleAdminClick} />
+            {main ? (
+                <Button text="Admin" onClick={handleAdminClick}/>
+            ) : (
+                <Button text="Salir" onClick={handleLogout}/>
+            )}
         </header>
     );
+};
+
+Header.propTypes = {
+    main: PropTypes.bool.isRequired
 };
 
 export default Header;

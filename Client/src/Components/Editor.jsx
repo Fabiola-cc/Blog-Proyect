@@ -3,11 +3,14 @@ import './Content.css';
 import MenuContent from './MenuContent';
 import EditPost from './EditPost'
 import Button from './Button';
+import PostForm from './PostForm';
+import './PostForms.css'
 
 const Editor = () => {
     // FETCH CONTENT
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(null);
+    const [toCreate, setToCreate] = useState(false);
 
     const getPosts = async () => {
         try {
@@ -42,8 +45,9 @@ const Editor = () => {
     }
 
     const handleClick = () => {
-        // Lógica para manejar el clic en el botón "Editar"
-        console.log('Edit button clicked');
+        // Lógica para manejar el clic en el botón "Crear"
+        setToCreate(true);
+        console.log('Create button clicked');
     };
 
     // VISUALIZE
@@ -56,10 +60,19 @@ const Editor = () => {
                 ))}
                 <Button text='Crear Post' onClick={handleClick}/>
             </ul>
+            {toCreate && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={() => setToCreate(false)}>&times;</span>
+                        <PostForm isEditing={false} />
+                    </div>
+                </div>
+            )}
 
+            
             <ul className="posts">
-                {posts.map(({ id, book_title, author, genero, sinopsis, comments }) => (
-                    <EditPost key={id} id={id} book_title={book_title} author={author} genero={genero} sinopsis={sinopsis} comments={comments} />
+                {posts.map(({ id, book_title, author, genre, sinopsis, comments }) => (
+                    <EditPost key={id} id={id} book_title={book_title} author={author} genero={genre} sinopsis={sinopsis} comments={comments} />
                 ))}
             </ul>
         </div>
