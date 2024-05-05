@@ -50,6 +50,12 @@ const Editor = () => {
         console.log('Create button clicked');
     };
 
+    const closeCreate = () => {
+        // Lógica para manejar el clic en el botón "Crear"
+        setToCreate(false);
+        getPosts();
+    };
+
     // VISUALIZE
     return (
         <div className="content">
@@ -60,11 +66,11 @@ const Editor = () => {
                 ))}
                 <Button text='Crear Post' onClick={handleClick}/>
             </ul>
-            {toCreate && (
+            {toCreate && ( //Formulario para crear posts (botón en menú)
                 <div className="modal">
                     <div className="modal-content">
                         <span className="close" onClick={() => setToCreate(false)}>&times;</span>
-                        <PostForm isEditing={false} />
+                        <PostForm isEditing={false} onClose={() => closeCreate()} />
                     </div>
                 </div>
             )}
@@ -72,7 +78,7 @@ const Editor = () => {
             
             <ul className="posts">
                 {posts.map(({ id, book_title, author, genre, sinopsis, comments }) => (
-                    <EditPost key={id} id={id} book_title={book_title} author={author} genero={genre} sinopsis={sinopsis} comments={comments} />
+                    <EditPost key={id} id={id} book_title={book_title} author={author} genre={genre} sinopsis={sinopsis} comments={comments} />
                 ))}
             </ul>
         </div>

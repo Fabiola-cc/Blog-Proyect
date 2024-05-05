@@ -6,12 +6,16 @@
 
 .menu {
     font-family: Baskerville;
-    width: 25vw;
-    height: 70vh;
+    width: 40vw;
+    height: 100vh;
     background-color: #D8BA9E;
     padding: 10px;
+    padding-left: 1%;
+    padding-right: 1%;
     text-align: center;
     color: #7D392D;
+    overflow: auto;
+    overflow-x:hidden;
 }
 
 .posts {

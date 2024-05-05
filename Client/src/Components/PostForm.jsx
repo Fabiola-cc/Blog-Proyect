@@ -1,17 +1,9 @@
-import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './PostForms.css'
 import Button from './Button';
+import useForm from '../Hooks/useForm';
 
-const PostForm = ({ isEditing, existingPostData }) => {
-    const [formData, setFormData] = useState({
-        book_title: '',
-        author: '',
-        genre: '',
-        sinopsis: '',
-        comments: ''
-    });
-    
+const PostForm = ({ isEditing, existingPostData, onClose }) => {
     const updatePost = async (postId, updatedData) => {
         try {
             const response = await fetch(`https://api.tiburoncin.lat/22787/posts/${postId}`, {
@@ -29,54 +21,63 @@ const PostForm = ({ isEditing, existingPostData }) => {
         }
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Limpiar el formulario después de enviar
-        setFormData({
-            book_title: '',
-            author: '',
-            genre: '',
-            sinopsis: '',
-            comments: ''
-        });
-    };
-
-    const loadPostData = (postData) => {
-        setFormData({
-            book_title: postData.book_title,
-            author: postData.author,
-            genre: postData.genero,
-            sinopsis: postData.sinopsis,
-            comments: postData.comments
-        });
-    };
-    
-    // Llamar a la función loadPostData con los datos del post existente cuando sea necesario
-    useEffect(() => {
-        if (isEditing) { // isEditing es un booleano que indica si estás editando un post
-            loadPostData(existingPostData);
+    const createPost = async(postData) => {
+        console.log(postData)
+        try {
+            const response = await fetch('https://api.tiburoncin.lat/22787/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+            });
+        
+            if (!response.ok) {
+            const errorMessage = await response.text();
+            throw new Error(`Error creating post: ${errorMessage}`);
+            }
+        
+            const newPost = await response.json();
+            return newPost;
+        } catch (error) {
+            console.error('Error creating post:', error);
+            throw error;
         }
-    }, [isEditing, existingPostData]); // Dependencias para el efecto
+    }  
+    
+    const initialValues = existingPostData ? existingPostData :{
+        book_title: '',
+        author: '',
+        genre: '',
+        sinopsis: '',
+        comments: ''
+    };
+
+    const handlePost = (postData) => {
+        if (isEditing) {
+            updatePost(existingPostData.id, postData);
+        } else {
+            createPost(postData);
+        }
+        onClose();
+    };
+
+    const { formData, handleChange, handleSubmit } = useForm(initialValues, handlePost);
 
     return (
         <div className='post-form'>
-            <h2>Post</h2>
+            <h2>Post Libro</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="book_title">Book Title:</label>
+                    <label htmlFor="book_title">Título:</label>
                     <input type="text" id="book_title" name="book_title" value={formData.book_title} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label htmlFor="author">Author:</label>
+                    <label htmlFor="author">Autor:</label>
                     <input type="text" id="author" name="author" value={formData.author} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label htmlFor="genre">Genre:</label>
+                    <label htmlFor="genre">Genero:</label>
                     <input type="text" id="genre" name="genre" value={formData.genre} onChange={handleChange} required />
                 </div>
                 <div>
@@ -84,10 +85,10 @@ const PostForm = ({ isEditing, existingPostData }) => {
                     <textarea id="sinopsis" name="sinopsis" value={formData.sinopsis} onChange={handleChange} required />
                 </div>
                 <div>
-                    <label htmlFor="comments">Comments:</label>
+                    <label htmlFor="comments">Comentarios:</label>
                     <textarea id="comments" name="comments" value={formData.comments} onChange={handleChange} required />
                 </div>
-                <Button text="Completado" onClick={handleSubmit}/>
+                <Button text="Completado" type="submit" />
             </form>
         </div>
     );
@@ -95,7 +96,8 @@ const PostForm = ({ isEditing, existingPostData }) => {
 
 PostForm.propTypes = {
     isEditing: PropTypes.bool.isRequired,
-    existingPostData: PropTypes.object
+    existingPostData: PropTypes.object,
+    onClose: PropTypes.func.isRequired
 };
 
 export default PostForm;
