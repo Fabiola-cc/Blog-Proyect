@@ -1,3 +1,8 @@
+.login{ 
+    height: 100vh; 
+    display: flex; 
+    align-items: center;
+}
 
 .login-form {
     background-color: #966D5B; /* base */
@@ -19,7 +24,8 @@
 }
 
 .input-group input {
-    width: 98%;
+    width: 95%;
+    height: 2%;
     padding: 2%;
     border: 1px solid #32191D; /* dark */
     border-radius: 5px;

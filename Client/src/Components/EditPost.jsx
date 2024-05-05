@@ -25,7 +25,7 @@ const Post = ({ id, book_title, author, genero, sinopsis, comments }) => {
     const handleClick = (postId) => {
         // Lógica para manejar el clic en el botón "Editar"
         setIsEditing(true);
-        console.log('Edit button clicked' + postId);
+        console.log('Edit button clicked ' + postId);
     };
 
     const handleDelete = async (postId) => {
@@ -43,7 +43,7 @@ const Post = ({ id, book_title, author, genero, sinopsis, comments }) => {
                 <p>Sinópsis: {sinopsis}</p>
                 <p>Comentario: {comments}</p>
                 <div className='buttons'>
-                <Button text='Editar' onClick={handleClick}/>
+                <Button text='Editar' onClick={() => handleClick(id)}/>
                 <Button text='Eliminar' onClick={() => handleDelete(id)}/>
                 </div>
                 {isEditing && (

@@ -1,17 +1,17 @@
-import './App.css';
-import Login from './Pages/Login';
-import MainPage from './Pages/MainPage';
-import AdminPage from './Pages/AdminPage';
+import './App.css'
+import { TokenProvider } from './Hooks/useToken'
+import { NavigationProvider } from './Hooks/useNavigate'
+import Pages from './Pages'
 
 
-const App = () => {
+function App() {
   return (
-    <>
-      <main className="app">
-        <AdminPage/>
-      </main>
-    </>
-  );
-};
+    <TokenProvider>
+      <NavigationProvider>
+        <Pages />
+      </NavigationProvider>
+    </TokenProvider>
+  )
+}
 
-export default App;
+export default App
