@@ -58,8 +58,6 @@ const useApi = (baseUrl) => {
     const [loading, setLoading] = useState(false);
   
     const login = async (username, password) => {
-        console.log(username)
-        console.log(password)
         try {
             setLoading(true);
             const body = {

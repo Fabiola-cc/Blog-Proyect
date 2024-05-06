@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
 
 const NavigationContext = createContext({ page: '/', navigate: () => {} })
 
-// eslint-disable-next-line react/prop-types
 const NavigationProvider = ({ children }) => {
   const path = window.location.hash.substring(1)
   const [page, setPage] = useState(path || '/')
@@ -29,6 +29,10 @@ const NavigationProvider = ({ children }) => {
 const useNavigate = () => {
   return useContext(NavigationContext)
 }
+
+NavigationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default useNavigate
 export { NavigationProvider }

@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react'
-
+import PropTypes from 'prop-types';
 
 function parseJwt (token) {
     const base64Url = token.split('.')[1]
@@ -14,7 +14,6 @@ function parseJwt (token) {
 
 const TokenContext = createContext({ token: '', useToken: () => {} })
 
-// eslint-disable-next-line react/prop-types
 const TokenProvider = ({ children }) => {
   const [ token, setToken ] = useState(
     localStorage.getItem('access_token') || null
@@ -43,6 +42,9 @@ const useToken = () => {
   return useContext(TokenContext) 
 }
 
+TokenProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default useToken
 export { TokenContext, TokenProvider }

@@ -24,8 +24,7 @@ function LoginForm() {
           throw new Error('Usuario o contraseña incorrectos.');
         }
         // Acciones después de iniciar sesión exitosamente
-        setToken(actual_token)
-        localStorage.setItem('accessToken', actual_token);
+        await setToken(actual_token) //Esperar a guardar el token para continuar
         navigate('/admin')
       } catch (error) {
         console.error('Error al iniciar sesión:', error);

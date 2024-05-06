@@ -10,12 +10,18 @@ const Header = ({ main }) => {
     const handleAdminClick = () => {
         // Redirigir a la pantalla de login
         console.log('Admin button clicked')
-        navigate('/login')
+        const token = localStorage.getItem('access_token');
+        if (token){
+            navigate('/admin')
+        } else{
+            navigate('/login')
+        }
     };
 
     const handleLogout = () => {
         // Redirigir a la pantalla principal y borrar local storage
         console.log('Logout button clicked')
+        localStorage.removeItem('access_token');
         navigate('/')
     };
 
@@ -23,9 +29,7 @@ const Header = ({ main }) => {
         <header className="header">
             Rincón de lectura
             {main ? (
-                <button className='button' onClick={handleAdminClick}>
-                Admin
-                </button>
+                <Button text="Admin" onClick={handleAdminClick}/>
             ) : (
                 <Button text="Salir" onClick={handleLogout}/>
             )}

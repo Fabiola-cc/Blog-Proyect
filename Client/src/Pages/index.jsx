@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-//import useToken from '../Hooks/useToken'
+import useToken from '../Hooks/useToken'
 import useNavigate from '../Hooks/useNavigate'
 
 import Login from './Login';
@@ -23,14 +23,14 @@ const routes = {
 }
 
 const Pages = () => {
-  const token = localStorage.getItem('token');
+  const { token } = useToken()
   const { page, navigate } = useNavigate();
 
   let CurrentPage = routes[page]?.component || MainPage;
   const requiresAuth = routes[page]?.requiresAuth || false;
 
   // Si la página requiere autenticación y el usuario no tiene un token válido,
-  // redireccionar automáticamente a la página principal
+  // redireccionar automáticamente a la página de login
   if (requiresAuth && !token) {
     navigate('/login');
     return null;
