@@ -30,3 +30,16 @@
     border: 1px solid #32191D; /* dark */
     border-radius: 5px;
 }
+
+.topLogin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.topLogin Button {
+    width: 8%;
+    height: 1%;
+    padding: 1%;
+    margin-right: 2%;
+}

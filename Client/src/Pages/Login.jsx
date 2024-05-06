@@ -24,10 +24,8 @@ function LoginForm() {
           throw new Error('Usuario o contraseña incorrectos.');
         }
         // Acciones después de iniciar sesión exitosamente
-        console.log(actual_token)
-        console.log(formData.username)
-        console.log(formData.password)
         setToken(actual_token)
+        localStorage.setItem('accessToken', actual_token);
         navigate('/admin')
       } catch (error) {
         console.error('Error al iniciar sesión:', error);
@@ -39,7 +37,10 @@ function LoginForm() {
     return (
         <div className='login'>
           <form className="login-form" onSubmit={handleSubmit}>
-              <h2>Iniciar Sesión</h2>
+              <div className='topLogin'>
+                <Button text='←' onClick={()=>navigate('/')}/>
+                <h2>Iniciar Sesión</h2>
+              </div>
               <div className="input-group">
                   <label htmlFor="username">Usuario</label>
                   <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required/>
