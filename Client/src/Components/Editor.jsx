@@ -5,39 +5,27 @@ import EditPost from './EditPost'
 import Button from './Button';
 import PostForm from './PostForm';
 import './PostForms.css'
+import useApi from '../Hooks/useApi';
 
 const Editor = () => {
     // FETCH CONTENT
     const [posts, setPosts] = useState([]);
-    const [error, setError] = useState(null);
     const [toCreate, setToCreate] = useState(false);
 
-    const getPosts = async () => {
-        try {
-            const apiResponse = await fetch('https://api.tiburoncin.lat/22787/posts');
-            if (!apiResponse.ok) {
-                throw new Error('Error al cargar los datos del API');
-            }
-            const jsonPosts = await apiResponse.json();
-            setPosts(jsonPosts);
-        } catch (error) {
-            console.error('Error al cargar los datos del API:', error.message);
-            setError('Error al cargar los datos del API. Por favor, inténtalo de nuevo más tarde.');
-        }
-    };
+    const apiUrl = 'https://api.tiburoncin.lat/23787/posts';
+    const { get } = useApi(apiUrl);
 
     useEffect(() => {
-        getPosts();
-    }, []);
-
-    // ERROR CATCH
-    if (error) {
-        return (
-            <div>
-                {error && <div className="error">{error}</div>}
-            </div>
-        );
-    }
+        const fetchPosts = async () => {
+            try {
+                const fetchedPosts = await get('/');
+                setPosts(fetchedPosts);
+            } catch (error) {
+                console.error('Error fetching posts:', error.message);
+            }
+        };
+        fetchPosts();
+    }, [get]);
 
     // WAITING LOGIC
     if (posts.length === 0) {
@@ -53,7 +41,6 @@ const Editor = () => {
     const closeCreate = () => {
         // Lógica para manejar el clic en el botón "Crear"
         setToCreate(false);
-        getPosts();
     };
 
     // VISUALIZE

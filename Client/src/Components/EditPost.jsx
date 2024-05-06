@@ -4,23 +4,23 @@ import './Post.css';
 import Button from './Button';
 import PostForm from './PostForm';
 import './PostForms.css'
+import useApi from '../Hooks/useApi';
 
 const Post = ({ id, book_title, author, genre, sinopsis, comments }) => {
     const postClassName = id % 2 !== 0 ? 'post post-blueish' : 'post post-redish';
     const [isEditing, setIsEditing] = useState(false);
 
+    const apiUrl = 'https://api.tiburoncin.lat/23787/posts';
+    const { remove } = useApi(apiUrl);
+
     const deletePost = async (postId) => {
         try {
-            const response = await fetch(`https://api.tiburoncin.lat/22787/posts/${postId}`, {
-                method: 'DELETE'
-            });
-            if (!response.ok) {
-                throw new Error('Error al eliminar el post');
-            }
+            await remove(`/${postId}`);
+            console.log('Post deleted successfully');
         } catch (error) {
-            console.error('Error al eliminar el post:', error.message);
+            console.error('Error deleting post:', error.message);
         }
-    };    
+    };
 
     const handleClick = (postId) => {
         // Lógica para manejar el clic en el botón "Editar"

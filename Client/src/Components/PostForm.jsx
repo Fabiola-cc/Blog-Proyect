@@ -2,48 +2,31 @@ import PropTypes from 'prop-types';
 import './PostForms.css'
 import Button from './Button';
 import useForm from '../Hooks/useForm';
+import useApi from '../Hooks/useApi';
 
 const PostForm = ({ isEditing, existingPostData, onClose }) => {
+    const apiUrl = 'https://api.tiburoncin.lat/23787/posts';
+    const { put } = useApi(apiUrl);
     const updatePost = async (postId, updatedData) => {
         try {
-            const response = await fetch(`https://api.tiburoncin.lat/22787/posts/${postId}`, {
-                method: 'PUT', // o 'PATCH' dependiendo de la API
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedData)
-            });
-            if (!response.ok) {
-                throw new Error('Error al actualizar el post');
-            }
+            await put(`/${postId}`, updatedData);
+            console.log('Post updated successfully');
         } catch (error) {
-            console.error('Error al actualizar el post:', error.message);
+            console.error('Error updating post:', error.message);
         }
     };
 
-    const createPost = async(postData) => {
-        console.log(postData)
+    const { post } = useApi(apiUrl);
+    const createPost = async (postData) => {
         try {
-            const response = await fetch('https://api.tiburoncin.lat/22787/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postData)
-            });
-        
-            if (!response.ok) {
-            const errorMessage = await response.text();
-            throw new Error(`Error creating post: ${errorMessage}`);
-            }
-        
-            const newPost = await response.json();
+            const newPost = await post('/', postData);
+            console.log('New post created:', newPost);
             return newPost;
         } catch (error) {
-            console.error('Error creating post:', error);
+            console.error('Error creating post:', error.message);
             throw error;
         }
-    }  
+    };
     
     const initialValues = existingPostData ? existingPostData :{
         book_title: '',

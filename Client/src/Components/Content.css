@@ -6,23 +6,24 @@
 
 .menu {
     font-family: Baskerville;
-    width: 40vw;
+    width: 20%;
     height: 100vh;
     background-color: #D8BA9E;
     padding: 10px;
     padding-left: 1%;
     padding-right: 1%;
     text-align: center;
-    color: #7D392D;
+    color: #7d392d;
     overflow: auto;
     overflow-x:hidden;
 }
 
 .posts {
+    width: 80%;
     display: grid;
     padding: 0 2% 0 2% ;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
+    gap: 1%;
 }
 
 .error {
