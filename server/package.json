@@ -1,15 +1,15 @@
 {
-  "name": "books_api",
+  "name": "blog_api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "main.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "node src/main.js"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fabiola-cc/books_api"
+    "url": "https://github.com/Fabiola-cc/Blog-Proyect"
   },
   "keywords": [
     "books"

@@ -5,7 +5,7 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 
 import {
-  getAllPosts, getPostById, insertPost, updatePost, deletePost, login,
+  getAllPosts, getPostById, insertPost, updatePost, deletePost, login, users
 } from './db.js';
 import { generateToken, validateToken } from './jwt.js'
 
@@ -26,6 +26,16 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/posts', async (req, res) => {
   try {
     const posts = await getAllPosts();
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/users', async (req, res) => {
+  try {
+    const posts = await users();
     res.status(200).json(posts);
   } catch (error) {
     console.error('Error fetching posts:', error);
@@ -85,24 +95,6 @@ app.delete('/posts/:postId', async (req, res) => {
   }
 });
 
-// Manejador de errores para errores 500
-app.use((err, req, res) => {
-  // Registra el error en un archivo de registro
-  fs.appendFileSync('error.log', `Internal server error: ${err}\n`)
-  // Envía una respuesta de error al cliente
-  res.status(500).json({ error: 'Internal server error' })
-})
-
-// Manejador de errores para métodos no implementados (501)
-app.use((req, res) => {
-  res.status(501).json({ error: 'Method not implemented' })
-})
-
-// Manejador de errores para endpoints no existentes (404) y errores de formato de body (400)
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not found' })
-})
-
 //Login
 app.post('/login', async (req, res) => {
   const { username, password } = req.body
@@ -137,6 +129,25 @@ app.get('/access', async (req, res) => {
 
   res.status(403)
   res.json([])
+})
+
+
+// Manejador de errores para errores 500
+app.use((err, req, res) => {
+  // Registra el error en un archivo de registro
+  fs.appendFileSync('error.log', `Internal server error: ${err}\n`)
+  // Envía una respuesta de error al cliente
+  res.status(500).json({ error: 'Internal server error' })
+})
+
+// Manejador de errores para métodos no implementados (501)
+app.use((req, res) => {
+  res.status(501).json({ error: 'Method not implemented' })
+})
+
+// Manejador de errores para endpoints no existentes (404) y errores de formato de body (400)
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' })
 })
 
 // Iniciar el servidor

@@ -42,3 +42,8 @@ export async function login(user, password_md5) {
   }
   return false
 }
+
+export async function users() {
+  const [rows] = await conn.query('SELECT * FROM users')
+  return rows
+}

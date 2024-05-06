@@ -1,5 +1,5 @@
-CREATE USER IF NOT EXISTS 'blog_user'@'%' IDENTIFIED BY 'blog_password';
-GRANT ALL PRIVILEGES ON blog_db.* TO 'blog_user'@'%' WITH GRANT OPTION;
+CREATE USER IF NOT EXISTS 'fabi-cc'@'%' IDENTIFIED BY 'fabiola';
+GRANT ALL PRIVILEGES ON blog_fabiola.* TO 'fabi-cc'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 
 CREATE TABLE IF NOT EXISTS blog_posts (
@@ -17,4 +17,4 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL
 );
 
-INSERT INTO users (user, password) VALUES ('admin', MD5('827ccb0eea8a706c4c34a16891f84e7b'));
+INSERT INTO users (user, password) VALUES ('admin', '827ccb0eea8a706c4c34a16891f84e7b');
