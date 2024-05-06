@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { md5 } from 'js-md5'
 
 const useApi = (baseUrl) => {
     const [error, setError] = useState(null);
@@ -54,7 +55,41 @@ const useApi = (baseUrl) => {
         return await fetchData(url, options);
     };
 
-    return { error, get, post, put, remove };
+    const [loading, setLoading] = useState(false);
+  
+    const login = async (username, password) => {
+        console.log(username)
+        console.log(password)
+        try {
+            setLoading(true);
+            const body = {
+                username: username,
+                password: md5(password)
+            };
+            const fetchOptions = {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            };
+            const response = await fetch('https://api.tiburoncin.lat/23787/login', fetchOptions);
+            const data = await response.json();
+            if (response.ok) {
+                console.log('ok')
+                return data.access_token;
+            } else {
+                throw new Error('Usuario o contraseña incorrecta');
+            }
+        } catch (error) {
+            console.log('buuu')
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { error, get, post, put, remove, loading, login };
 };
 
 export default useApi;
