@@ -68,8 +68,8 @@ const Editor = () => {
 
             
             <ul className="posts">
-                {posts.map(({ id, book_title, author, genre, sinopsis, comments }) => (
-                    <EditPost key={id} id={id} book_title={book_title} author={author} genre={genre} sinopsis={sinopsis} comments={comments} />
+                {posts.map(({ id, book_title, author, genre, sinopsis, comments, fecha }) => (
+                    <EditPost key={id} id={id} book_title={book_title} author={author} genre={genre} sinopsis={sinopsis} comments={comments} fecha={fecha.slice(0, 10)}/>
                 ))}
             </ul>
         </div>

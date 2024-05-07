@@ -55,8 +55,8 @@ const Content = () => {
             </ul>
 
             <ul className="posts">
-                {posts.map(({ id, book_title, author, sinopsis, comments }) => (
-                    <Post key={id} id={id} book_title={book_title} author={author} sinopsis={sinopsis} comments={comments} />
+                {posts.map(({ id, book_title, author, sinopsis, comments, fecha }) => (
+                    <Post key={id} id={id} book_title={book_title} author={author} sinopsis={sinopsis} comments={comments} fecha={fecha.slice(0, 10)}/>
                 ))}
             </ul>
         </div>

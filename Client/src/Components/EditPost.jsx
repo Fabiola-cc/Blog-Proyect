@@ -6,7 +6,7 @@ import PostForm from './PostForm';
 import './PostForms.css'
 import useApi from '../Hooks/useApi';
 
-const Post = ({ id, book_title, author, genre, sinopsis, comments }) => {
+const Post = ({ id, book_title, author, genre, sinopsis, comments, fecha }) => {
     const postClassName = id % 2 !== 0 ? 'post post-blueish' : 'post post-redish';
     const [isEditing, setIsEditing] = useState(false);
 
@@ -42,6 +42,7 @@ const Post = ({ id, book_title, author, genre, sinopsis, comments }) => {
                 <p>Género: {genre}</p>
                 <p>Sinópsis: {sinopsis}</p>
                 <p>Comentario: {comments}</p>
+                <p>Editado: {fecha}</p>
                 <div className='buttons'>
                 <Button text='Editar' onClick={() => handleClick(id)}/>
                 <Button text='Eliminar' onClick={() => handleDelete(id)}/>
@@ -52,7 +53,7 @@ const Post = ({ id, book_title, author, genre, sinopsis, comments }) => {
                         <span className="close" onClick={() => setIsEditing(false)}>&times;</span>
                         <PostForm 
                             isEditing={isEditing}
-                            existingPostData={{ id, book_title, author, genre, sinopsis, comments }} // Pasar los datos del post existente al formulario de edición
+                            existingPostData={{ id, book_title, author, genre, sinopsis, comments}} // Pasar los datos del post existente al formulario de edición
                             onClose={() => setIsEditing(false)}
                         />
                     </div>
@@ -70,6 +71,7 @@ Post.propTypes = {
     genre: PropTypes.string.isRequired,
     sinopsis: PropTypes.string.isRequired,
     comments: PropTypes.string.isRequired,
+    fecha: PropTypes.string.isRequired,
 };
 
 export default Post;
