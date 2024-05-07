@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0;
-  background-image: url('/img/library_wp.jpg');
+  background-image: url('./assets/library_wp.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

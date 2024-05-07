@@ -6,6 +6,7 @@ import Button from './Button';
 import PostForm from './PostForm';
 import './PostForms.css'
 import useApi from '../Hooks/useApi';
+import libraryImage from '../assets/loading.gif';
 
 const Editor = () => {
     // FETCH CONTENT
@@ -29,7 +30,7 @@ const Editor = () => {
 
     // WAITING LOGIC
     if (posts.length === 0) {
-        return <img src="/img/loading.gif" alt="loading" className="loading-image" />;
+        return <img src={libraryImage} alt="loading" className="loading-image" />;
     }
 
     const handleClick = () => {

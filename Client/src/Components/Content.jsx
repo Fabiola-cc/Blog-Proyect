@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './Content.css';
 import MenuContent from './MenuContent';
 import Post from './Post';
+import libraryImage from '../assets/loading.gif';
 
 const Content = () => {
     // FETCH CONTENT
@@ -37,7 +38,7 @@ const Content = () => {
 
     // WAITING LOGIC
     if (posts.length === 0) {
-        return <img src="/img/loading.gif" alt="loading" className="loading-image" />;
+        return <img src={libraryImage} alt="loading" className="loading-image" />;
     }
 
     // VISUALIZE
