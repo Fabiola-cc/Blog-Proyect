@@ -30,7 +30,10 @@ const Editor = () => {
 
     // WAITING LOGIC
     if (posts.length === 0) {
-        return <img src={libraryImage} alt="loading" className="loading-image" />;
+        return (
+            <div className='imageContainer'>
+                <img src={libraryImage} alt="loading" className="loading-image" />
+            </div>);
     }
 
     const handleClick = () => {

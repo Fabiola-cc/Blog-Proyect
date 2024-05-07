@@ -7,15 +7,14 @@
 .menu {
     font-family: Baskerville;
     width: 20%;
-    height: 100vh;
+    min-height: 60vh;
+    height: fit-content;
     background-color: #D8BA9E;
     padding: 10px;
     padding-left: 1%;
     padding-right: 1%;
     text-align: center;
     color: #7d392d;
-    overflow: auto;
-    overflow-x:hidden;
 }
 
 .posts {
@@ -38,7 +37,14 @@
 }
 
 .loading-image {
-    height: 100vh;
+    height: auto;
     width: 80vw;
     padding: 10px;
+}
+
+.imageContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

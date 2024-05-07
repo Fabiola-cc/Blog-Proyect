@@ -1,7 +1,7 @@
 .header {
     display: flex;
     background-color: #966D5B;
-    height: 10vh;
+    height: fit-content;
     width: 95%;
     font-weight: bold;
     font-size: 50px;
