@@ -1,6 +1,6 @@
-# Blog de Lectura
+# Rincón de Lectura
 
-Este repositorio contiene el código fuente para un blog de lectura, que consta de un cliente y un servidor.
+El proyecto es un blog de lectura que permite a los usuarios leer la sinópsis, reseñas, comentarios y recomendaciones sobre libros. Cuenta con un solo administrador quien puede editar, eliminar y crear nuevos posts sobre distintos libros, para así compartir sus opiniones sobre nuevas lecturas.
 
 ## Cliente
 
@@ -30,6 +30,14 @@ El servidor es una API REST desarrollada con Node.js y Express. Gestiona la lóg
 - **jwt.js**: Archivo que proporciona funciones para generar y validar tokens JWT para la autenticación de usuarios.
 - **schema.sql**: Archivo SQL que define el esquema de la base de datos.
 - **swagger.yaml**: Archivo YAML que contiene la documentación de la API en formato Swagger.
+
+## Tecnologías Usadas
+En el momento de creación de este blog estoy aprendiendo a emplear cada una de las herramientas empleadas, por lo que puse en práctica su uso.
+
+- **Frontend**: El cliente del blog está construido con React.js y utiliza Vite como herramienta de construcción. React.js es conocido por su eficiencia en el manejo del estado de la aplicación y su capacidad para crear interfaces de usuario dinámicas y receptivas. Y Vite por su velocidad de compilación y recarga, lo que ayuda a mejorar la productividad del desarrollo.
+- **Backend**:  El servidor del blog está construido con Node.js y Express.js. Se eligió Node.js por su naturaleza basada en JavaScript, lo que facilita la sincronización entre el frontend y el backend. Express.js se utiliza como marco de aplicación web para facilitar el enrutamiento y la gestión de solicitudes HTTP.
+- **Base de Datos**: Se utiliza MySQL como base de datos relacional para almacenar la información de los usuarios y publicaciones del blog.
+- **Autenticación**: La autenticación de los usuarios se realiza mediante tokens JWT (JSON Web Tokens), que se generan y verifican en el servidor. 
 
 ## Uso
 
