@@ -54,7 +54,7 @@ Para ejecutar el cliente y el servidor, de manera local, sigue estas instruccion
 
 ## Obtención en Línea
 
-El cliente puede ser accedido en línea desde [https://sweet-peony-9eebb7.netlify.app/](https://sweet-peony-9eebb7.netlify.app/).
+El cliente puede ser accedido en línea desde [rincondelectura.netlify.app](https://rincondelectura.netlify.app/).
 
 La API del servidor está disponible en línea en [https://api.tiburoncin.lat/22787/posts](https://api.tiburoncin.lat/22787/posts). 
 - Puedes cambiar el endpoint según tus necesidades para interactuar con diferentes partes de la API.
